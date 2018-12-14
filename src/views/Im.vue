@@ -31,7 +31,7 @@ LJFtPI4KldquN/oSLHe5wWAsOB1IrF4AYFpapkbJVl119xINQy5bAIiSGQ==
     })
   },
   created() {
-    const TLSAPI = require("../../public/TLSAPI");
+    const TLSAPI = require("../../static/TLSAPI");
     var sigObj = new TLSAPI.Sig(this.config);
     this.sig = sigObj.genSig("im01");
     

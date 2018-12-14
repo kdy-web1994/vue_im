@@ -1,11 +1,12 @@
-const path = require('path')
-//去console插件
-const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+process.env.NODE_ENV = 'production'
+const path = require('path');
+const vueLoaderConfig = require('./vue-loader.conf')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
+const AssetsPlugin = require('assets-webpack-plugin'); // 生成文件名，配合HtmlWebpackPlugin增加打包后dll的缓存
 const webpack = require('webpack')
-const srcPath = path.join(__dirname, './public/dll');
-
+const srcPath = path.join(__dirname, '../static/dll');
 const vendors = [
 
   'vue/dist/vue.esm.js',
@@ -17,6 +18,7 @@ const vendors = [
   'fastclick'
 
 ]
+
 const webpackConfig = {
   entry: {
     // 多入口，单入口情况，只需写一个，key值自定义，value值为数组
@@ -32,10 +34,20 @@ const webpackConfig = {
     library: "[name]_library"
   },
   module: {
-    rules: [
+    loaders: [{
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: vueLoaderConfig
+      },
+      {
+        test: /muse-ui.src.*?js$/,
+        loader: 'babel-loader'
+      },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"]
+        use: ExtractTextPlugin.extract({
+          use: "css-loader"
+        })
       },
       {
         test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
@@ -52,12 +64,12 @@ const webpackConfig = {
     new webpack.DllPlugin({
       // DllPlugin的name属性需要和libary保持一致
       name: '[name]_library',
-      path: path.join(__dirname, './public/dll', '[name]-mainfest.json'),
+      path: path.join(__dirname, '../static/dll', '[name]-mainfest.json'),
       // context需要和webpack.config.js保持一致
       context: __dirname,
 
     }),
-    new MiniCssExtractPlugin({
+    new ExtractTextPlugin({
       filename: '[name].dll.css'
     }),
     new OptimizeCSSPlugin({
@@ -75,8 +87,11 @@ const webpackConfig = {
           warnings: false
         }
       }
-    })
-
+    }),
+    new AssetsPlugin({
+     filename: 'bundle-config.json',
+     path: './static/dll'
+   })
 
   ]
 }
