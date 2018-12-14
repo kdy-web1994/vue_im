@@ -1,19 +1,21 @@
 <template>
-  <div class="skeleton page">
+  <div class="skeleton_page">
     
-<div class="skeleton">
-    <div class="skeleton-head"></div>
-    <div class="skeleton-body">
-        <div class="skeleton-title"></div>
-        <div class="skeleton-content"></div>
-    </div>
+<div class="skeleton_item">
+    
 </div>
-<div class="skeleton">
-    <div class="skeleton-head"></div>
-    <div class="skeleton-body">
-        <div class="skeleton-title"></div>
-        <div class="skeleton-content"></div>
-    </div>
+
+<div class="skeleton_item">
+    
+</div>
+<div class="skeleton_item">
+    
+</div>
+<div class="skeleton_item">
+    
+</div>
+<div class="skeleton_item">
+    
 </div>
 
 
@@ -22,40 +24,21 @@
 
 <style>
 
-.skeleton {
+.skeleton_page {
+  min-height: 100vh;
+  background: #FFF;
   padding: 10px;
+  box-sizing: border-box;
 }
- 
-.skeleton .skeleton-head,
-.skeleton .skeleton-title,
-.skeleton .skeleton-content {
+
+.skeleton_item{
   background: rgb(194, 207, 214);
-}
- 
-.skeleton-head {
-  width: 100px;
-  height: 100px;
-  float: left;
-}
- 
-.skeleton-body {
-  margin-left: 110px;
-}
- 
-.skeleton-title {
-  width: 500px;
-  height: 60px;
-  transform-origin: left;
+  width: 2rem;
+  height: 1rem;
   animation: skeleton-stretch .5s linear infinite alternate;
 }
- 
-.skeleton-content {
-  width: 260px;
-  height: 30px;
-  margin-top: 10px;
-  transform-origin: left;
-  animation: skeleton-stretch .5s -.3s linear infinite alternate;
-}
+
+
  
 @keyframes skeleton-stretch {
   from {

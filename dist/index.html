@@ -1,36 +1,16 @@
 <!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"><title>vue2</title><link href=./static/css/app.a61295e18763f6bbd6a7f1b3767dcd9a.css rel=stylesheet><style data-vue-ssr-id="cf7fd5a4:0">
-.skeleton {
+.skeleton_page {
+  min-height: 100vh;
+  background: #FFF;
   padding: 10px;
+  box-sizing: border-box;
 }
-.skeleton .skeleton-head,
-.skeleton .skeleton-title,
-.skeleton .skeleton-content {
+.skeleton_item{
   background: rgb(194, 207, 214);
-}
-.skeleton-head {
-  width: 100px;
-  height: 100px;
-  float: left;
-}
-.skeleton-body {
-  margin-left: 110px;
-}
-.skeleton-title {
-  width: 500px;
-  height: 60px;
-  -webkit-transform-origin: left;
-          transform-origin: left;
+  width: 2rem;
+  height: 1rem;
   -webkit-animation: skeleton-stretch .5s linear infinite alternate;
           animation: skeleton-stretch .5s linear infinite alternate;
-}
-.skeleton-content {
-  width: 260px;
-  height: 30px;
-  margin-top: 10px;
-  -webkit-transform-origin: left;
-          transform-origin: left;
-  -webkit-animation: skeleton-stretch .5s -.3s linear infinite alternate;
-          animation: skeleton-stretch .5s -.3s linear infinite alternate;
 }
 @-webkit-keyframes skeleton-stretch {
 from {
@@ -53,4 +33,19 @@ to {
 }
 }
 
-</style></head><body><div id=app><div data-server-rendered="true" class="skeleton page"><div class="skeleton"><div class="skeleton-head"></div> <div class="skeleton-body"><div class="skeleton-title"></div> <div class="skeleton-content"></div></div></div> <div class="skeleton"><div class="skeleton-head"></div> <div class="skeleton-body"><div class="skeleton-title"></div> <div class="skeleton-content"></div></div></div></div></div><script type=text/javascript src=./static/dll/vendor.js></script><script type=text/javascript src=./static/sdk/webim.js></script><!-- built files will be auto injected --><script type=text/javascript src=./static/js/manifest.8aea1c3c107e11116c5a.js></script><script type=text/javascript src=./static/js/vendor.72a33ba2748b3ee0c660.js></script><script type=text/javascript src=./static/js/app.422b92fe54c79897735c.js></script></body></html>
+</style></head><script>(function(doc, win) {
+			var docEl = doc.documentElement,
+				resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+				recalc = function() {
+					var clientWidth = docEl.clientWidth;
+					if(!clientWidth) return;
+					if(clientWidth >= 750) {
+						docEl.style.fontSize = '100px';
+					} else {
+						docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+					}
+				};
+			if(!doc.addEventListener) return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);</script><body><div id=app><div data-server-rendered="true" class="skeleton_page"><div class="skeleton_item"></div> <div class="skeleton_item"></div> <div class="skeleton_item"></div> <div class="skeleton_item"></div> <div class="skeleton_item"></div></div></div><script type=text/javascript src=./static/dll/vendor.js></script><script type=text/javascript src=./static/sdk/webim.js></script><!-- built files will be auto injected --><script type=text/javascript src=./static/js/manifest.8aea1c3c107e11116c5a.js></script><script type=text/javascript src=./static/js/vendor.72a33ba2748b3ee0c660.js></script><script type=text/javascript src=./static/js/app.422b92fe54c79897735c.js></script></body></html>
